@@ -23,6 +23,13 @@ class MainActivity : AppCompatActivity() {
         checkButton.setOnClickListener {
             val input = inputField.text.toString()
 
+            if (input.length != 1) {
+                // Проверка, что введён ровно один символ
+                Toast.makeText(this, "Введите ровно один символ", Toast.LENGTH_SHORT).show()
+                resultText.text = "Ошибка ввода"
+                return@setOnClickListener
+            }
+
             val symbol = input[0]
             if (!symbol.isLowerCase() || !symbol.isLetter()) {
                 // Проверка, что символ является строчной латинской буквой
